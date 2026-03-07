@@ -23,6 +23,6 @@ public class Direccion {
 
     @OneToOne
     @JoinColumn(name = "idCliente")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Cliente cliente;
 }
