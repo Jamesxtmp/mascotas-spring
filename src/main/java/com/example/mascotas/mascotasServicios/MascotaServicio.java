@@ -13,7 +13,7 @@ import java.util.Date;
 @Data
 @ToString
 @Entity
-@Table(name = "mascota-servicio")
+@Table(name = "mascota_servicio")
 
 public class MascotaServicio {
     @Id
