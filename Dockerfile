@@ -1,7 +1,7 @@
 # Etapa 1: Construcción (Build)
 FROM maven:3.8.5-openjdk-17 AS build
 COPY . .
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests -Dfile.encoding=UTF-8
 
 # Etapa 2: Ejecución (Runtime)
 FROM eclipse-temurin:17-jdk-alpine
