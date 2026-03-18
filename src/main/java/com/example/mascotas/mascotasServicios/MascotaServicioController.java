@@ -41,9 +41,19 @@ public class MascotaServicioController {
     }
 
     @GetMapping
-    public ResponseEntity<List<MascotaServicio>> getAll() {
-        List<MascotaServicio> lista = new ArrayList<>();
-        mascotaServicioRepository.findAll().forEach(lista::add);
+    public ResponseEntity<List<MascotaServicioDTO>> getAll() {
+        List<MascotaServicioDTO> lista = new ArrayList<>();
+        mascotaServicioRepository.findAll().forEach(ms -> {
+            Long idMascota = ms.getMascota() != null ? ms.getMascota().getIdMascota() : null;
+            Long idServicio = ms.getServicio() != null ? ms.getServicio().getIdServicio() : null;
+            lista.add(new MascotaServicioDTO(
+                ms.getIdMascotaServicio(),
+                ms.getFecha(),
+                ms.getNota(),
+                idMascota,
+                idServicio
+            ));
+        });
         return ResponseEntity.ok(lista);
     }
 
