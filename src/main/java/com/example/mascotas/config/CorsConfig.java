@@ -7,13 +7,20 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class CorsConfig {
+    private static final String[] ALLOWED_ORIGINS = new String[] {
+        "https://mascotasweb2.netlify.app",
+        "https://mascotas-web2.netlify.app",
+        "http://localhost:3000",
+        "http://localhost:5173"
+    };
+
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                    .allowedOrigins("https://mascotasweb2.netlify.app", "http://localhost:3000")
+                    .allowedOrigins(ALLOWED_ORIGINS)
                     .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                     .allowedHeaders("*")
                     .allowCredentials(true);
